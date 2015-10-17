@@ -45,8 +45,3 @@ app.use(require('koa-static')(path.resolve('build'), {
 app.use(require('koa-favicon')(path.resolve('static/favicon.ico'), {
   maxAge: 31536000
 }))
-
-// Throw a 404
-app.use(function * (next) {
-  this.status = 404
-})
