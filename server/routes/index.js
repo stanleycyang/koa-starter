@@ -22,7 +22,10 @@ routes.push(function * (next) {
   this.response.set('Cache-Control', 'public, max-age=300')
 })
 
-// Throw a 404
+/* Throw a 404
+ * This must be the last route in the stack
+ */
+
 routes.push(function * (next) {
   this.status = 404
   this.response.body = jade.renderFile(error, {
