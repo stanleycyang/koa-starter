@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./bin/www -w config.js -w server"
+    "start": "nodemon ./bin/www -w config.js -w server -w package.json"
   },
   "keywords": [],
   "author": "Stanley C Yang <stanley@stanleycyang.com> (http://www.stanleycyang.com)",
