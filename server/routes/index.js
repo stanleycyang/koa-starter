@@ -11,6 +11,10 @@ const home = path.resolve('client/views/index.jade')
 // Home page for our SPA
 routes.push(function * (next) {
   if (this.request.path !== '/') return yield* next
+
+  // Send the jade file
   this.response.body = jade.renderFile(home)
+
+  // Set response header
   this.response.set('Cache-Control', 'public, max-age=300')
 })
