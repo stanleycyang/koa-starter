@@ -5,8 +5,13 @@ const path = require('path')
 const config = require('../config')
 const app = module.exports = require('koa')()
 
+// logger
+app.use(require('koa-logger')())
+
+// CORS
 app.use(require('kcors')())
 
+// compress everything
 app.use(require('koa-compress')({
   // flush: require('zlib').Z_SYNC_FLUSH
 }))
