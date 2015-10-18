@@ -9,7 +9,10 @@ const routes = module.exports = []
 const home = path.resolve('client/views/index.jade')
 const error = path.resolve('client/views/error.jade')
 
-// Home page for our SPA
+/*
+ * Home page for our SPA
+ */
+
 routes.push(function * (next) {
   if (this.request.path !== '/') return yield* next
 
