@@ -5,7 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./bin/www -w config.js -w server -w package.json",
-    "lint": "eslint bin/www client server config.js"
+    "lint": "eslint bin/www client server config.js",
+    "build": "webpack --config client/webpack.config.js --optimize-dedupe --optimize-minimize",
+    "watch": "webpack --config client/webpack.dev.config.js --debug --devtool source-map --progress --colors --watch --hot --content-base build/",
+    "postinstall": "npm run build",
+    "test": "mocha",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot",
+    "test-ci": "npm run lint && istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter dot"
   },
   "keywords": [
     "starter",
