@@ -4,7 +4,10 @@ import ReactDOM from 'react-dom'
 export default class App extends Component {
   render() {
     return (
-      <h1>Hello world</h1>
+      <div>
+        <h1>Koa Starter Kit</h1>
+        <p>Courtesy of Stanley Yang</p>
+      </div>
     )
   }
 }

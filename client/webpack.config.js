@@ -78,6 +78,9 @@ const DevServer = new WebpackDevServer(webpack(config), {
   noInfo: true,
   hot: true,
   quiet: true,
+  proxy: {
+    '*': 'http://localhost:3000'
+  },
   headers: {
     'Access-Control-Allow-Origin': '*'
   }
