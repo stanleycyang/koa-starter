@@ -4,13 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./bin/www -w config.js -w server -w package.json"
+    "start": "nodemon ./bin/www -w config.js -w server -w package.json",
+    "lint": "eslint bin/www client server config.js"
   },
-  "keywords": [],
+  "keywords": [
+    "starter",
+    "koajs",
+    "generators"
+  ],
   "author": "Stanley C Yang <stanley@stanleycyang.com> (http://www.stanleycyang.com)",
   "license": "ISC",
   "dependencies": {
+    "co-body": "^4.0.0",
     "dotenv": "^1.2.0",
+    "flat": "^1.6.0",
     "jade": "^1.11.0",
     "kcors": "^1.0.1",
     "koa": "^1.1.0",
@@ -59,11 +66,6 @@
   "engines": {
     "node": "4"
   },
-  "keywords": [
-    "starter",
-    "koajs",
-    "generators"
-  ],
   "babel": {
     "stage": 0,
     "optional": [

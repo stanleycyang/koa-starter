@@ -2,6 +2,7 @@
 
 const webpack = require('webpack')
 const path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -15,6 +16,11 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
@@ -38,7 +44,22 @@ module.exports = {
         loaders: [
           'json'
         ]
+      },
+      {
+        test:/\.css$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
       }
     ]
-  }
+  },
+  postcss: function () {
+    return [
+      require('postcss-import'),
+      require('postcss-cssnext'),
+      require('cssnano')({
+        safe: true
+      })
+    ]
+  },
+  // node node built-ins
+  node: false
 }
