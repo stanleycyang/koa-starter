@@ -11,12 +11,13 @@ const entrypoint_prefix = [
 ]
 
 const config = module.exports = {
+  devtool: 'inline-source-map',
   entry: {
     // Root component. Add additional components with the same prefix, ie. entrypoint_prefix.concat('your_entry_point')
-    'main': entrypoint_prefix.concat('./client/components/main/index')
+    'main': entrypoint_prefix.concat('./client/index')
   },
   output: {
-    path: path.resolve('client', 'build'),
+    path: path.resolve('static', 'build'),
     publicPath: 'http://localhost:' + port + '/',
     filename: '[name].js'
   },
@@ -56,6 +57,8 @@ const config = module.exports = {
       }
     ],
     plugins: [
+      new webpack.NoErrorsPlugin(),
+      new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin()
     ]
   },
@@ -68,8 +71,11 @@ const config = module.exports = {
   node: false
 }
 
+// Webpack Dev Server
 const DevServer = new WebpackDevServer(webpack(config), {
   contentBase: path.resolve('build') + '/',
+  inline: true,
+  noInfo: true,
   hot: true,
   quiet: true,
   headers: {
@@ -79,4 +85,5 @@ const DevServer = new WebpackDevServer(webpack(config), {
 
 DevServer.listen(port, 'localhost', (err) => {
   if (err) throw err
+  console.log('Bundling project, please wait...')
 })

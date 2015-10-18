@@ -22,12 +22,14 @@ routes.push(function * (next) {
   this.response.set('Cache-Control', 'public, max-age=300')
 })
 
-/* Throw a 404
- * This must be the last route in the stack
+/*
+ * Error page
  */
 
 routes.push(function * (next) {
-  this.status = 404
+  if (this.request.path !== '/404') return yield* next
+
+  // send the jade file
   this.response.body = jade.renderFile(error, {
     message: '404: Page not found',
   })
