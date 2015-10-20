@@ -26,3 +26,10 @@
     ├── humans.txt
     └── robots.txt
 ```
+
+###Installation
+
+```bash
+git clone git@github.com:stanleycyang/koa-starter.git
+npm install
+```
